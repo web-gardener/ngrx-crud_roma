@@ -9,6 +9,7 @@ $background-color_1: transparent;
 
 .posts {
 
+  padding: 25px;
 	background: #fff;
 	border: 0;
 	border-radius: 2px;
@@ -22,30 +23,6 @@ $background-color_1: transparent;
   margin: 0 auto;
   margin-top: 100px;
 
-	&__header {
-		padding: 24px 14px 20px 24px;
-
-		&--title {
-			color: $color_1;
-			font-weight: 100;
-			font-size: 20px;
-			margin: 0;
-			display: inline-block;
-		}
-
-		&--icons {
-			font-size: 24px;
-			float: right;
-			vertical-align: middle;
-			
-      & .material-icons {
-				&:first-child {
-					padding-right: 24px;
-				}
-			}
-		}
-	}
-
 	&__wrapper {
 		display: block;
 		max-width: 100%;
@@ -58,79 +35,134 @@ $background-color_1: transparent;
     width: 100%;
     overflow: hidden;
   }
-}
-.table {
 
-  width: 100%;
-  border-spacing: 0px;
-  
-  & .datatype-string {
-    text-align: left;
-  }
-  & .datatype-numeric {
-    text-align: right;
-  }
-  
-  & tr {
-    border-bottom: 1px solid #e0e0e0;
-    & td {
-        text-overflow: ellipsis;
-        padding: 0 56px 0 0;
-        border: 0;
-        &:first-child {
-          padding: 0 56px 0 24px;
-        }
-        &:last-child {
-          padding: 0 24px 0 0;
-        }
-      }
-  }
+  &__filter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 
-  
-  &__header {
-    &--row {
-      height: 64px;
-      padding: 0 24px;
+    padding: 0 12px;
+    
+    .bigger {
+      flex-basis: 72%;
     }
 
-    &--datacell {
-      color: $color_2;
-      font-size: 12px;
-      font-weight: 500;
-      vertical-align: middle;
-      .material-icons {
-        font-size: 18px;
+    &--item {
+      flex: 1 0 20%;
+      margin: 8px 10px; 
+    }
+  }
+
+  /* Table content */ 
+
+  & .table {
+  
+    width: 100%;
+    border-spacing: 0px;
+    
+    & .datatype-string {
+      text-align: left;
+    }
+    & .datatype-numeric {
+      text-align: right;
+    }
+    
+    & tr {
+      border-bottom: 1px solid #e0e0e0;
+      & td {
+          text-overflow: ellipsis;
+          padding: 0 56px 0 0;
+          border: 0;
+          &:first-child {
+            padding: 0 26px 0 24px;
+          }
+          &:last-child {
+            padding: 0 24px 0 0;
+          }
+        }
+    }
+  
+    
+    &__header {
+      &--row {
+        height: 64px;
+        padding: 0 24px;
+      }
+  
+      &--datacell {
+        color: $color_2;
+        font-size: 12px;
+        font-weight: 500;
         vertical-align: middle;
-        padding-right: 8px;
+        .material-icons {
+          font-size: 18px;
+          vertical-align: middle;
+          padding-right: 8px;
+        }
+      }
+    }
+    
+    &__content {
+      &--row { 
+        height: 48px;
+        cursor: pointer;
+        
+        &:hover {
+          background: #eee;
+        }
+      }
+  
+      &--datacell {
+        color: $color_1;
+        font-weight: 500;
+        input[type="text"] {
+          background: transparent;
+          border: 0;
+          color: $color_3;
+          font-family: $font-family_1;
+          font-size: 13px;
+          font-weight: 400;
+          height: 40px;
+          &::placeholder {
+            color: $color_4;
+          }
+        }
       }
     }
   }
-  
-  &__content {
-    &--row { 
-      height: 48px;
-      cursor: pointer;
-      
-      &:hover {
-        background: #eee;
-      }
-    }
 
-    &--datacell {
-      color: $color_1;
-      font-weight: 500;
-      input[type="text"] {
-        background: transparent;
-        border: 0;
-        color: $color_3;
-        font-family: $font-family_1;
-        font-size: 13px;
-        font-weight: 400;
-        height: 40px;
-        &::placeholder {
-          color: $color_4;
-        }
-      }
+}
+
+/* Create section */ 
+.create {
+  margin-top: 50px;
+
+  & .bigger {
+    flex-basis: 45%;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    padding: 28px;
+    background: #fff;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+    font-family: $font-family_1;
+    font-size: 13px;
+    font-weight: 400;
+    
+    width: auto;
+    max-width: 768px;
+    margin: 0 auto;
+
+    &--item {
+      flex: 1 0 20%; 
+      margin: 10px; 
     }
   }
 }
