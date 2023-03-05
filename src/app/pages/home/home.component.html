@@ -6,13 +6,13 @@
 
       <div class="posts__filter--item bigger">
         <div class="input-form">
-          <input  type="text" id="name_filter" placeholder="&nbsp;">
-          <label for="name_filter" data-label="Filtro de nombre"></label>
+          <input  type="text" id="filterName" placeholder="&nbsp;" [(ngModel)]="filterName" name="filterName" (input)="filterEmpty()">
+          <label for="filterName" data-label="Filtro de nombre"></label>
         </div>
       </div>
 
       <div class="posts__filter--item">
-        <button class="button center" (click)="onSearch()">Buscar</button>
+        <button class="button center" (click)="filterSearch()">Buscar</button>
       </div>
     </div>
 
@@ -27,26 +27,24 @@
 			</thead>
 
 			<tbody class="table__content">
-				<tr class="table__content--row">
-					<td class="table__content--datacell datatype-string">Something</td>
-					<td class="table__content--datacell datatype-string">algo</td>
-					<td class="table__content--datacell datatype-string">eliminar</td>
-				</tr>
-
-        <tr class="table__content--row">
-					<td class="table__content--datacell datatype-string">Something</td>
-					<td class="table__content--datacell datatype-string">algo</td>
-					<td class="table__content--datacell datatype-string">eliminar</td>
-				</tr>
-
-        <tr class="table__content--row">
-					<td class="table__content--datacell datatype-string">Something</td>
-					<td class="table__content--datacell datatype-string">algo</td>
-					<td class="table__content--datacell datatype-string">eliminar</td>
-				</tr>
+        <ng-container *ngIf="posts$ | async as posts">
+          <tr class="table__content--row" *ngFor="let post of posts$ | async; let i = index;" [ngClass]="{'alternate': i % 2 == 0 }">
+            <td class="table__content--datacell datatype-string">{{post.name}}</td>
+            <td class="table__content--datacell datatype-string">{{post.description}}</td>
+            <td class="table__content--datacell datatype-string"><button type="button" (click)="deletePost(post.id)">Eliminar</button></td>
+          </tr>
+        </ng-container>
 			</tbody>
 
 		</table>
+
+    <div class="error--info" *ngIf="(posts$ | async)?.length === 0 && filterName.length > 0">
+      <p>No hay resultados para "{{ filterName }}"</p>
+    </div>
+
+    <div class="error--info" *ngIf="(posts$ | async)?.length === 0 && filterName.length == 0">
+      <p>No hay posts por el momento.</p>
+    </div>
 
 	</div>
 
@@ -57,20 +55,20 @@
 
       <div class="create__content--item">
         <div class="input-form">
-          <input  type="text" id="name" placeholder="&nbsp;">
+          <input  type="text" id="name" placeholder="&nbsp;" [(ngModel)]="name" name="name" required>
           <label for="name" data-label="Nombre"></label>
         </div>
       </div>
       
       <div class="create__content--item bigger">
         <div class="input-form">
-          <input  type="text" id="desc" placeholder="&nbsp;">
+          <input  type="text" id="desc" placeholder="&nbsp;" [(ngModel)]="description" name="description" required>
           <label for="desc" data-label="Descripción"></label>
         </div>
       </div>
 
       <div class="create__content--item">
-        <button class="button center" (click)="onSave()">Crear</button>
+        <button class="button center" (click)="savePost()">Crear</button>
       </div>
     
   </div>

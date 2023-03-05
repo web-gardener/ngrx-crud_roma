@@ -49,7 +49,7 @@ $background-color_1: transparent;
 
     &--item {
       flex: 1 0 20%;
-      margin: 8px 10px; 
+      margin: 14px 10px; 
     }
   }
 
@@ -107,9 +107,14 @@ $background-color_1: transparent;
         height: 48px;
         cursor: pointer;
         
-        &:hover {
+        &.alternate {
           background: #eee;
         }
+        
+        &:hover {
+          background: #d1d1d1;
+        }
+
       }
   
       &--datacell {
