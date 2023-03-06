@@ -1,29 +1,14 @@
 {
   "posts": [
     {
-      "id": "9zd1x6qa8",
-      "name": "Post 1",
-      "description": "Lorem impsum something"
+      "id": "sbcd1uojj",
+      "name": "post",
+      "description": "asdasd"
     },
     {
-      "id": "cc5mbsqjm",
-      "name": "Post 2",
-      "description": "NgRx"
-    },
-    {
-      "id": "ohkccwac6",
-      "name": "Post 3",
-      "description": "Angular"
-    },
-    {
-      "id": "uo3byerng",
-      "name": "Post 4",
-      "description": "este también"
-    },
-    {
-      "id": "4udcn6ul7",
-      "name": "ASD",
-      "description": "ASAS"
+      "id": "kkg5qji5s",
+      "name": "asdasd",
+      "description": "asdasd"
     }
   ]
 }

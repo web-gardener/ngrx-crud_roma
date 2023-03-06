@@ -3,11 +3,44 @@ $--black: #000000;
 $--white: white;
 $--green: #4CAF50;
 $--red: #ed6f71;
+/* Fonts */
+@font-face {
+	font-family: 'Mont-bold';
+	src: url('./assets/fonts/Montserrat/static/Montserrat-Bold.ttf') format('truetype');
+} 
+@font-face {
+	font-family: 'Mont-medium';
+	src: url('./assets/fonts/Montserrat/static/Montserrat-Medium.ttf') format('truetype');
+} 
 
 body {
 	background: #363e3f;
 	padding: 0;
 	margin: 0;
+	font-family: 'Mont-medium';
+}
+
+div {
+	font-family: 'Mont-medium';
+}
+
+a,p,span {
+	font-family: 'Mont-medium';
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Mont-bold';
+}
+
+input, textarea, button, label {
+	font-family: 'Mont-medium';
+}
+
+table,tr,td {
+	font-family: 'Mont-medium';
+}
+th {
+	font-family: 'Mont-bold';
 }
 
 /* UI */
@@ -47,7 +80,7 @@ body {
 				}
 			}
 		}
-		
+
 		&:active {
 			outline: none;
 			box-shadow: none;

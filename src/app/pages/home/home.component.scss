@@ -2,7 +2,6 @@ $--black: rgba(0, 0, 0, 0.87);
 $--grayDark: rgba(0, 0, 0, 0.38);
 $--red: #ed6f71;
 $--green: #4CAF50;
-$font-roboto: "Roboto", sans-serif;
 
 .posts {
 
@@ -11,7 +10,6 @@ $font-roboto: "Roboto", sans-serif;
 	border: 0;
 	border-radius: 2px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-	font-family: $font-roboto;
 	font-size: 13px;
 	font-weight: 400;
 	margin: 2em;
@@ -68,13 +66,10 @@ $font-roboto: "Roboto", sans-serif;
       border-bottom: 1px solid #e0e0e0;
       & td {
           text-overflow: ellipsis;
-          padding: 0 56px 0 0;
+          padding: 10px 10px;
           border: 0;
           &:first-child {
             padding: 0 26px 0 24px;
-          }
-          &:last-child {
-            padding: 0 24px 0 0;
           }
         }
     }
@@ -84,6 +79,10 @@ $font-roboto: "Roboto", sans-serif;
       &--row {
         height: 64px;
         padding: 0 24px;
+
+        & th {
+          font-size: 14px;
+        }
       }
   
       &--datacell {
@@ -120,7 +119,6 @@ $font-roboto: "Roboto", sans-serif;
           background: transparent;
           border: 0;
           color: $--grayDark;
-          font-family: $font-roboto;
           font-size: 13px;
           font-weight: 400;
           height: 40px;
@@ -153,7 +151,6 @@ $font-roboto: "Roboto", sans-serif;
     border-radius: 2px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
-    font-family: $font-roboto;
     font-size: 13px;
     font-weight: 400;
     
@@ -200,12 +197,19 @@ form {
 	display: block;
 	z-index: -1;
 	-webkit-animation: bubbleMove $time ease-in-out infinite;
-  opacity: .7;
+  opacity: .8;
 }
 
-@mixin bubbleAlert(){
-  animation: bubbleShake 1s ease;
-	-webkit-animation: bubbleShake 1.5s ease;
+@mixin bubbleAlert($time){
+  transition: 1s;
+  animation: bubbleShake $time ease;
+	-webkit-animation: bubbleShake $time ease;
+}
+
+@mixin bubbleHappy($time){
+  transition: 1s;
+  animation: bubbleRotate $time ease;
+	-webkit-animation: bubbleRotate $time ease;
 }
 
 .bubbleOne::before {
@@ -213,15 +217,23 @@ form {
 }
 .bubbleOne.error::before {
   @include bubble(300px, $--red, 27%, 32%, 5s);
-  @include bubbleAlert();
+  @include bubbleAlert(2s);
 }
 
 .bubbleTwo::before {
 	@include bubble(200px, $--green, 62%, 5%, 10s);
 }
 .bubbleTwo.error::before {
-  @include bubble(200px, $--red, 62%, 5%, 10s);
-  @include bubbleAlert();
+  @include bubble(200px, $--red, 62%, 40%, 10s);
+  @include bubbleAlert(1.5s);
+}
+
+.bubbleOne.success::before {
+  @include bubbleHappy(3s);
+}
+
+.bubbleTwo.success::before {
+  @include bubbleHappy(4s);
 }
 
 @keyframes bubbleMove {
@@ -259,6 +271,24 @@ form {
     scale: 1.5;
   }
   100%{
+    scale: 1;
+  }
+}
+
+@keyframes bubbleRotate {
+  0%{
+    scale: 1;
+    transform: translate3d(0,0,0) rotateZ(0deg);
+  }
+  20%{
+    transform: translate3d(0,0,0) rotateZ(100deg);
+  }
+  30%{
+    scale: 1.3;
+    transform: translate3d(0,0,0) rotateZ(-50deg);
+  }
+  100%{
+    transform: translate3d(0,0,0) rotateZ(360deg);
     scale: 1;
   }
 }

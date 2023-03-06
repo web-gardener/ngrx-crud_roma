@@ -26,9 +26,9 @@
 
 			<thead class="table__header">
 				<tr class="table__header--row">
-					<td class="table__header--datacell datatype-string">Nombre</td>
-					<td class="table__header--datacell datatype-string">Descripción</td>
-					<td class="table__header--datacell datatype-string center">Acción</td>
+					<th class="table__header--datacell datatype-string">Nombre</th>
+					<th class="table__header--datacell datatype-string">Descripción</th>
+					<th class="table__header--datacell datatype-string center">Acción</th>
 				</tr>
 			</thead>
 
@@ -71,10 +71,11 @@
           <div class="input-form">
             <input  
               type="text" 
-              [ngClass]="{'error': postForm.controls.name.errors && postForm.controls.name.touched}"
+              [ngClass]="{
+                'error': (postForm.controls.name.errors && postForm.controls.name.touched)
+              }"
               id="name" 
-              placeholder="&nbsp;" 
-              [(ngModel)]="name" 
+              placeholder="&nbsp;"
               formControlName="name">
             <label for="name" data-label="Nombre"></label>
           </div>
@@ -87,10 +88,11 @@
           <div class="input-form">
             <input 
               type="text" 
-              [ngClass]="{'error': postForm.controls.description.errors && postForm.controls.description.touched}"
+              [ngClass]="{
+                'error': (postForm.controls.description.errors && postForm.controls.description.touched)
+              }"
               id="desc" 
               placeholder="&nbsp;" 
-              [(ngModel)]="description" 
               formControlName="description">
             <label for="desc" data-label="Descripción"></label>
           </div>
@@ -110,6 +112,12 @@
 </section>
 
 <!-- Bubbles -->
-<div class="bubbleOne" [ngClass]="{'error': postForm.controls.name.errors && !postForm.valid && submitted}"></div>
+<div class="bubbleOne" [ngClass]="{
+  'error': (postForm.controls.name.errors && !postForm.valid && submitted),
+  'success': saveSuccess
+}"></div>
 
-<div class="bubbleTwo" [ngClass]="{'error': postForm.controls.description.errors && !postForm.valid && submitted}"></div>
+<div class="bubbleTwo" [ngClass]="{
+  'error': (postForm.controls.description.errors && !postForm.valid && submitted),
+  'success': saveSuccess
+}"></div>

@@ -18,9 +18,8 @@ import { selectPosts } from '../../store/selectors/post.selectors'
 export class HomeComponent implements OnInit {
   
   /** NgModel variables */
-  name: string = ""
-  description: string = ""
   filterName: string = ""
+  saveSuccess: boolean = false; // animation feedback
 
   /** Post form */
   postForm = new FormGroup({
@@ -57,6 +56,8 @@ export class HomeComponent implements OnInit {
     this.submitted = true
     if(!this.postForm.valid) return
     
+    this.animationSuccess()
+
     const post: any = {
       id: Math.random().toString(36).substr(2, 9),
       name: this.postForm.value.name,
@@ -67,7 +68,6 @@ export class HomeComponent implements OnInit {
     this.submitted = false
     this.postForm.reset();
     this.updateStatus()
-    this.setFormDefaultValues()
   }
 
   /**
@@ -118,10 +118,13 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   * setFormDefaultValues - This set the initial values to the form of create post
+   * animationSuccess - This let me animate for a couple of seconds the bubbles 
+   * when the user is creating a post succesfully
    */
-  setFormDefaultValues() {
-    this.name = ""
-    this.description = ""
+  animationSuccess(){
+    this.saveSuccess = true
+    setTimeout(()=>{
+      this.saveSuccess = false
+    },4000)
   }
 }
