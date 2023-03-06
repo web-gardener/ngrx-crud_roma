@@ -29,14 +29,15 @@ Special thanks go to:
 
 The client in Angular will run at `port 4200` and the url to access is `http://localhost:4200`.
 
-To start the client:
-- `npm install`
-- `npm start` or `ng serve` 
-
 The json server will run at `port 3000` and the url to access is `http://localhost:3000/posts`.
 To run the json server:
 - `npm run json-run`
 
+To start the client:
+- `npm install`
+- `npm start` or `ng serve` to init the project
+
+It is mandatory run the server json.
 ### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
