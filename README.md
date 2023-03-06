@@ -21,7 +21,7 @@ Special thanks go to:
 
 ## Languages
 
-| NgRx | Angular 15|
+| NgRx 15 | Angular 15|
 | --- | --- |
 | [![NgRx](https://ngrx.io/assets/images/badge.svg)]()  | [![Angular](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/300px-Angular_full_color_logo.svg.png)]()
 
