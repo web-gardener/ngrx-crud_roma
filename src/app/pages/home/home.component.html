@@ -4,6 +4,7 @@
 
     <div class="posts__filter">
 
+      <!-- Filter search -->
       <form (ngSubmit)="filterSearch()">
 
         <div class="posts__filter--item bigger">
@@ -20,6 +21,7 @@
       </form>
     </div>
 
+    <!-- Posts list -->
 		<table class="table">
 
 			<thead class="table__header">
@@ -46,6 +48,7 @@
 
 		</table>
 
+    <!-- Messages -->
     <div class="error--info" *ngIf="(posts$ | async)?.length === 0 && filterName.length > 0">
       <p>No hay resultados para "{{ filterName }}"</p>
     </div>
@@ -58,22 +61,41 @@
 
 </section>
 
+<!-- Save form -->
 <section class="create">
-  <form (ngSubmit)="savePost()">
+  <form [formGroup]="postForm" (ngSubmit)="savePost()">
 
     <div class="create__content">
 
         <div class="create__content--item">
           <div class="input-form">
-            <input  type="text" id="name" placeholder="&nbsp;" [(ngModel)]="name" name="name" required>
+            <input  
+              type="text" 
+              [ngClass]="{'error': postForm.controls.name.errors && postForm.controls.name.touched}"
+              id="name" 
+              placeholder="&nbsp;" 
+              [(ngModel)]="name" 
+              formControlName="name">
             <label for="name" data-label="Nombre"></label>
+          </div>
+          <div *ngIf="!postForm.valid && submitted">
+            <div class="error--danger" *ngIf="postForm.controls.name.errors">Debe ingresar el nombre.</div>
           </div>
         </div>
         
         <div class="create__content--item bigger">
           <div class="input-form">
-            <input  type="text" id="desc" placeholder="&nbsp;" [(ngModel)]="description" name="description" required>
+            <input 
+              type="text" 
+              [ngClass]="{'error': postForm.controls.description.errors && postForm.controls.description.touched}"
+              id="desc" 
+              placeholder="&nbsp;" 
+              [(ngModel)]="description" 
+              formControlName="description">
             <label for="desc" data-label="Descripción"></label>
+          </div>
+          <div *ngIf="!postForm.valid && submitted">
+            <div class="error--danger" *ngIf="postForm.controls.description.errors">Debe ingresar la descripción.</div>
           </div>
         </div>
 
@@ -87,7 +109,7 @@
   
 </section>
 
-<!-- Waves -->
-<div class="waveOne"></div>
+<!-- Bubbles -->
+<div class="bubbleOne" [ngClass]="{'error': postForm.controls.name.errors && !postForm.valid && submitted}"></div>
 
-<div class="waveTwo"></div>
+<div class="bubbleTwo" [ngClass]="{'error': postForm.controls.description.errors && !postForm.valid && submitted}"></div>

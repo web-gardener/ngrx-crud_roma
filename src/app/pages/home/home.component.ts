@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { select, Store } from '@ngrx/store'
 import { map } from 'rxjs'
@@ -20,6 +21,14 @@ export class HomeComponent implements OnInit {
   name: string = ""
   description: string = ""
   filterName: string = ""
+
+  /** Post form */
+  postForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+  });
+
+  submitted: boolean = false;
 
   /** List of posts */
   posts$ = this.store.pipe(select(selectPosts))
@@ -45,17 +54,20 @@ export class HomeComponent implements OnInit {
    * savePost - This save the post generating a randomly string
    */
   savePost(){
-    if(this.name && this.description) {
-      const post: Posts = {
-        id: Math.random().toString(36).substr(2, 9),
-        name: this.name,
-        description: this.description,
-      };
-  
-      this.store.dispatch(invokeSaveNewPostAPI({ newPost: post }))
-      this.updateStatus()
-      this.setFormDefaultValues()
-    }
+    this.submitted = true
+    if(!this.postForm.valid) return
+    
+    const post: any = {
+      id: Math.random().toString(36).substr(2, 9),
+      name: this.postForm.value.name,
+      description: this.postForm.value.description,
+    };
+
+    this.store.dispatch(invokeSaveNewPostAPI({ newPost: post }))
+    this.submitted = false
+    this.postForm.reset();
+    this.updateStatus()
+    this.setFormDefaultValues()
   }
 
   /**

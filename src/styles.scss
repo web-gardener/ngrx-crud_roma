@@ -2,8 +2,7 @@
 $--black: #000000;
 $--white: white;
 $--green: #4CAF50;
-$font-family_1: 'Open Sans', sans-serif;
-$background-color_1: transparent;
+$--red: #ed6f71;
 
 body {
 	background: #363e3f;
@@ -28,6 +27,7 @@ body {
 		border-bottom: 2px solid #ddd;
     padding: 0 3%;
 
+		/* default color */ 
 		&:focus {
 			outline: none;
 			box-shadow: none;
@@ -47,22 +47,43 @@ body {
 				}
 			}
 		}
+		
 		&:active {
 			outline: none;
 			box-shadow: none;
 			color: $--green;
 		}
+
 		&:not(:placeholder-shown) {
 			~ {
 				label {
 					&:before {
 						font-size: 12px;
 						bottom: 34px;
-            left: 3%;
+						left: 3%;
 					}
 				}
 			}
 		}
+
+		/* Error color */
+		&.error:focus {
+			color: $--red;
+			~ {
+				label {
+					&:before {
+						color: $--red;
+					}
+					&:after {
+						background-image: radial-gradient(circle, $--red 10%, rgba(0, 0, 0, 0) 11%) !important;
+					}
+				}
+			}
+		}
+		&.error:active {
+			color: $--red;
+		}
+
 	}
 
 	& label {
@@ -126,7 +147,7 @@ body {
   }
 
 	&.danger {
-		background-color: #ed6f71;
+		background-color: $--red;
 	}
 
 	&.small {

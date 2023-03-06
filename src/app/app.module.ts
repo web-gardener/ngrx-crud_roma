@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostsModule } from './posts/posts.module';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
@@ -22,7 +22,8 @@ import { EffectsModule } from '@ngrx/effects';
     RouterModule,
     PostsModule,
     StoreModule.forRoot({ appState: AppReducer }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
