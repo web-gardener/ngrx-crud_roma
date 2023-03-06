@@ -1,13 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 $--black: #000000;
-$--blue: #48cfad;
 $--white: white;
-$font-family_1: 'Open Sans', sans-serif;
 $--green: #4CAF50;
+$font-family_1: 'Open Sans', sans-serif;
 $background-color_1: transparent;
 
 body {
-	background: #f5f5f5;
+	background: #363e3f;
 	padding: 0;
 	margin: 0;
 }
@@ -32,18 +31,18 @@ body {
 		&:focus {
 			outline: none;
 			box-shadow: none;
-			color: $--blue;
+			color: $--green;
 			~ {
 				label {
 					&:before {
 						font-size: 12px;
 						bottom: 34px;
-						color: $--blue;
+						color: $--green;
 					}
 					&:after {
 						background-repeat: no-repeat;
 						background-size: 1000% 1000%;
-						background-image: radial-gradient(circle, #48cfad 10%, rgba(0, 0, 0, 0) 11%) !important;
+						background-image: radial-gradient(circle, $--green 10%, rgba(0, 0, 0, 0) 11%) !important;
 					}
 				}
 			}
@@ -51,7 +50,7 @@ body {
 		&:active {
 			outline: none;
 			box-shadow: none;
-			color: $--blue;
+			color: $--green;
 		}
 		&:not(:placeholder-shown) {
 			~ {
@@ -101,7 +100,7 @@ body {
 	overflow: hidden;
 	position: relative;
 	text-decoration: none;
-	text-transform: uppercase;
+  text-transform: capitalize;
 	border-radius: 3px;
 	-webkit-transition: 0.3s;
 	-moz-transition: 0.3s;
@@ -125,4 +124,24 @@ body {
     display: block;
     margin: 0 auto;
   }
+
+	&.danger {
+		background-color: #ed6f71;
+	}
+
+	&.small {
+		padding: 8px 18px 4px 4px;
+		text-align: center;
+
+		& i {
+			text-align: center;
+			position: relative;
+			left: 6px;
+		}
+		& span {
+			position: relative;
+			bottom: 6px;
+			left: 4px;
+		}
+	}
 }

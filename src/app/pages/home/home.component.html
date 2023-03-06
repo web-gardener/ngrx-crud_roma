@@ -4,16 +4,20 @@
 
     <div class="posts__filter">
 
-      <div class="posts__filter--item bigger">
-        <div class="input-form">
-          <input  type="text" id="filterName" placeholder="&nbsp;" [(ngModel)]="filterName" name="filterName" (input)="filterEmpty()">
-          <label for="filterName" data-label="Filtro de nombre"></label>
-        </div>
-      </div>
+      <form (ngSubmit)="filterSearch()">
 
-      <div class="posts__filter--item">
-        <button class="button center" (click)="filterSearch()">Buscar</button>
-      </div>
+        <div class="posts__filter--item bigger">
+          <div class="input-form">
+            <input  type="text" id="filterName" placeholder="&nbsp;" [(ngModel)]="filterName" name="filterName" (input)="filterEmpty()">
+            <label for="filterName" data-label="Filtro de nombre"></label>
+          </div>
+        </div>
+
+        <div class="posts__filter--item">
+          <button type="submit" class="button center">Buscar</button>
+        </div>
+
+      </form>
     </div>
 
 		<table class="table">
@@ -22,7 +26,7 @@
 				<tr class="table__header--row">
 					<td class="table__header--datacell datatype-string">Nombre</td>
 					<td class="table__header--datacell datatype-string">Descripción</td>
-					<td class="table__header--datacell datatype-string">Acción</td>
+					<td class="table__header--datacell datatype-string center">Acción</td>
 				</tr>
 			</thead>
 
@@ -31,7 +35,11 @@
           <tr class="table__content--row" *ngFor="let post of posts$ | async; let i = index;" [ngClass]="{'alternate': i % 2 == 0 }">
             <td class="table__content--datacell datatype-string">{{post.name}}</td>
             <td class="table__content--datacell datatype-string">{{post.description}}</td>
-            <td class="table__content--datacell datatype-string"><button type="button" (click)="deletePost(post.id)">Eliminar</button></td>
+            <td class="table__content--datacell datatype-string">
+              <button type="button" class="button center small danger" (click)="deletePost(post.id)">
+                <i class="large material-icons">delete_forever</i>
+              </button>
+            </td>
           </tr>
         </ng-container>
 			</tbody>
@@ -51,25 +59,35 @@
 </section>
 
 <section class="create">
-  <div class="create__content">
+  <form (ngSubmit)="savePost()">
 
-      <div class="create__content--item">
-        <div class="input-form">
-          <input  type="text" id="name" placeholder="&nbsp;" [(ngModel)]="name" name="name" required>
-          <label for="name" data-label="Nombre"></label>
+    <div class="create__content">
+
+        <div class="create__content--item">
+          <div class="input-form">
+            <input  type="text" id="name" placeholder="&nbsp;" [(ngModel)]="name" name="name" required>
+            <label for="name" data-label="Nombre"></label>
+          </div>
         </div>
-      </div>
+        
+        <div class="create__content--item bigger">
+          <div class="input-form">
+            <input  type="text" id="desc" placeholder="&nbsp;" [(ngModel)]="description" name="description" required>
+            <label for="desc" data-label="Descripción"></label>
+          </div>
+        </div>
+
+        <div class="create__content--item">
+          <button class="button center">Crear</button>
+        </div>
       
-      <div class="create__content--item bigger">
-        <div class="input-form">
-          <input  type="text" id="desc" placeholder="&nbsp;" [(ngModel)]="description" name="description" required>
-          <label for="desc" data-label="Descripción"></label>
-        </div>
-      </div>
+    </div>
 
-      <div class="create__content--item">
-        <button class="button center" (click)="savePost()">Crear</button>
-      </div>
-    
-  </div>
+  </form>
+  
 </section>
+
+<!-- Waves -->
+<div class="waveOne"></div>
+
+<div class="waveTwo"></div>

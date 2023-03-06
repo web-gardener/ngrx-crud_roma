@@ -45,15 +45,17 @@ export class HomeComponent implements OnInit {
    * savePost - This save the post generating a randomly string
    */
   savePost(){
-    const post: Posts = {
-      id: Math.random().toString(36).substr(2, 9),
-      name: this.name,
-      description: this.description,
-    };
-
-    this.store.dispatch(invokeSaveNewPostAPI({ newPost: post }))
-    this.updateStatus()
-    this.setFormDefaultValues()
+    if(this.name && this.description) {
+      const post: Posts = {
+        id: Math.random().toString(36).substr(2, 9),
+        name: this.name,
+        description: this.description,
+      };
+  
+      this.store.dispatch(invokeSaveNewPostAPI({ newPost: post }))
+      this.updateStatus()
+      this.setFormDefaultValues()
+    }
   }
 
   /**
