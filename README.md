@@ -1,13 +1,10 @@
-# NgRx CRUD ROMA [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/romaestradaflo)
+# NgRx CRUD ROMA
 
 ![version](https://img.shields.io/badge/version-1.0.0-blue.svg)  ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.1.
 
 This web application will have a simple CRUD on the front side using NgRx, You will be able to create a post, delete it and filter post by "nombre".
-
-Special thanks go to:
-- [Romario Estrada](https://linktr.ee/romaef) for his nice develop.
 
 
 ## Table of Contents
@@ -110,9 +107,3 @@ At present, we officially aim to support the last two versions of the following 
 ## Licensing
 
 Licensed under MIT
-
-##### Social Media
-#
-Web Page: <http://romaef.wordpress.com>
-
-Twitter: <https://twitter.com/romaestradaflo>
